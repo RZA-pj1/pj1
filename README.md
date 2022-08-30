@@ -1,4 +1,5 @@
-# Node JS
+#8/30
+## Node JS
 
 nodemon 설치
 
@@ -361,3 +362,22 @@ nodemon 설치
     ```
     
 - 로그인 기능 Part2 토큰 이용
+
+##aws
+
+###putty
+
+###mongodb 설치
+```ubuntu
+```
+//우분투 버전확인 및 맞는 버전 설치
+lsb_release -dc
+//공개키 가져오기
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+//몽고DB에 대한 목록파일 만들기
+echo "deb [ arch = amd64, amr64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee/etc/apt/sources.list.d/mongodb-org-5.0.list
+//로컬 패키지 데이터베이스 다시 로드
+sudo apt-get update
+//몽고디비 최신버전 설치
+sudo apt-get install -y mongodb-org
+```
