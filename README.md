@@ -368,7 +368,7 @@ nodemon 설치
 ###putty
 
 ###mongodb 설치
-```ubuntu
+
 ```
 //우분투 버전확인 및 맞는 버전 설치
 lsb_release -dc
