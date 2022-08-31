@@ -363,11 +363,11 @@ nodemon 설치
     
 - 로그인 기능 Part2 토큰 이용
 
-##aws
+## aws
 
-###putty
+### putty
 
-###mongodb 설치
+### mongodb 설치
 
 ```
 //우분투 버전확인 및 맞는 버전 설치
