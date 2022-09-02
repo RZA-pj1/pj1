@@ -1,10 +1,25 @@
+/*
+    담당자 : 김건희
+    함수 설명 : 
+    기능 설명 :  1. 비밀번호, 사번 검증 - [비밀번호, 사번 둘 중 하나가 틀린 경우 둘 다 오류 표시]
+                2. 회원가입 페이지 이동
+                3. 메인 페이지 이동 기능 - [토큰을 이용한 사용자 검증]
+
+ */
 const express = require('express')
+const expressLayouts = require('express-ejs-layouts')
 const app = express()
+
 const bodyParser = require('body-parser');
+
 const cookieParser = require('cookie-parser');
+
 const config = require('./config/key');
+
 const { auth } = require('./middleware/auth');
+
 const { User } = require("./models/User");
+
 
 //application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,23 +34,28 @@ mongoose.connect(config.mongoURI, {
 }).then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
 
+app.set('layout', './login')
+//app.set('layout', './add_user')
+app.set("layout extractScripts", true) 
+app.set('view engine', 'ejs')
+app.engine('html', require('ejs').renderFile)
 
-app.get('/', (req, res) => res.send('Hello World!~~ '))
+app.get('/', (req, res) => res.render('login',{content:"로그인"}))
 
-app.get('/api/hello', (req, res) => res.send('Hello World!~~ '))
+//app.get('/api/hello', (req, res) => res.send('Hello World!~~ '))
 
 app.post('/api/users/register', (req, res) => {
 
   //회원 가입 할떄 필요한 정보들을  client에서 가져오면 
   //그것들을  데이터 베이스에 넣어준다. 
   const user = new User(req.body)
-
   user.save((err, userInfo) => {
     if (err) return res.json({ success: false, err })
     return res.status(200).json({
       success: true
     })
   })
+  res.render('index',{addUser:'회원가입'})
 })
 
 app.post('/api/users/login', (req, res) => {
