@@ -565,6 +565,9 @@ url : https://www.postman.com/
 
 ![image](https://user-images.githubusercontent.com/60457431/187565022-7c183e26-dc53-4008-9b72-700115613b72.png)
 
+# 9월 2일
+
+## ejs와 node.js mongoDB 연동 
 
 
 
