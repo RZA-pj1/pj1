@@ -569,5 +569,12 @@ url : https://www.postman.com/
 
 ## ejs와 node.js mongoDB 연동 
 
+# 9월 4일
 
+## express generator 환경구축
 
+```cmd
+npm install express-generator -g
+express -h
+express --view=pug myapp
+```
