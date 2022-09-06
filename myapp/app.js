@@ -1,9 +1,14 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
+
+
+var config = require('./config/key');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -37,5 +42,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+//mongoose.Promise = global.Promise;
+mongoose.connect('mongodb+srv://test:0000@cluster0.dihw999.mongodb.net/test',{
+  //useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
+}).then(() => console.log('connected successful'))
+  .catch((err) => console.error(err));
 
 module.exports = app;
